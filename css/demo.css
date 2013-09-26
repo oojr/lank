@@ -1,0 +1,87 @@
+/* centers demo items in the viewport for demo site;
+ * exclude appbar because it should be at the top of the demo;
+ * exclude layout because setting absolute position on flexbox causes
+ * weirdness in FF18 where the flex item render doesn't override the
+ * height 0 fix in layout.css */
+.demo-wrap .demo > *:only-child:not(x-appbar):not(x-layout){
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+/* to address rendering issue when button is absolutely positioned */
+.demo-wrap .demo > x-iconbutton:only-child:not(x-appbar):not(x-layout){
+    position:relative;
+}
+
+.demo-wrap .demo > form{
+    box-shadow: 1px 1px 4px grey;
+    background-color: rgba(255,255,255,0.5);
+    background-image: none;
+    padding: 0.5em;
+}
+
+.demo {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  width: 240px;
+  height: 360px;
+  margin: 1em auto;
+  border: 10px solid #ffd700;
+  border-width: 40px 15px 60px;
+  border-radius: 20px;
+  position: relative;
+  background: #d3d3d3 url("../img/retina_wood.png") repeat;
+}
+
+/* fake phone button */
+.demo:after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 103%;
+  left: 43.75%;
+  left: calc(50% - 15px);
+  background: #fff;
+  border-radius: 20px;
+}
+
+.demo[data-src] {
+  background: none;
+}
+
+.demo-left {
+  margin: 1em 0;
+}
+
+.demo iframe {
+  border: 0;
+  border-radius: 2px;
+  box-shadow: 0 0 0 3px #222;
+  height: 480px;
+  opacity: 0;
+  -webkit-transform: scale(.75);
+  transform: scale(.75);
+  -webkit-transform-origin: top left;
+  transform-origin: top left;
+  -webkit-transition: .5s opacity ease-out;
+  transition: .5s opacity ease-out;
+  width: 320px;
+}
+
+@media screen and (max-width: 767px) {
+  .demo {
+    -webkit-transform: scale(.6);
+    transform: scale(.6);
+    margin: -70px auto;
+  }
+  .demo iframe {
+    pointer-events: none;
+  }
+}

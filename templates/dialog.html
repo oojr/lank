@@ -1,0 +1,11 @@
+<div ng-show="visible">
+  <div id="fade"></div>
+  <div id="dialog">
+  	<div class="dialog-title">{{title}}</div>
+    <div class="dialog-body" ng-transclude></div>
+   <div class="dialog-footer">
+    <button class="pure-button-small" ng-click="onYes()">Yes</button>
+    <button class="pure-button-small" ng-click="onNo()">No</button>
+  </div>
+  </div>    
+</div>

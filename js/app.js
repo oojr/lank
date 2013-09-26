@@ -1,0 +1,1 @@
+var lankModule = angular.module('lankcomponents', []);
